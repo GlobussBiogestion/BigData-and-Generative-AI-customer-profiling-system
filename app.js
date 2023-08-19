@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 // Configuración de MongoDB Atlas
-const mongoURI = 'mongodb+srv://Globuss:Perry-08@cluster0.vyxifef.mongodb.net/GlobussDB?retryWrites=true&w=majority';
+const mongoURI = 'mongodb+srv://<nombre_usuario>:<contraseña>@<nombre_cluster>.mongodb.net/<nombre_base_datos>
+?retryWrites=true&w=majority';
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Conexión a MongoDB Atlas exitosa'))
     .catch(err => console.error('Error al conectar a MongoDB Atlas:', err));
