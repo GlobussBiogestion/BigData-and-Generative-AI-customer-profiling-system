@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi Página Web</title>
+</head>
+<body>
+    <h1>Bienvenido a mi página web</h1>
+    <input type="text" id="userId" placeholder="Nombre de usuario">
+    <br><br>
+    <a href="#" onclick="registrarAccion('enlace-interno')">Enlace Interno</a>
+    <a href="https://www.ejemplo.com" onclick="registrarAccion('enlace-externo')">Enlace Externo</a>
+    <br><br>
+    <button onclick="registrarAccion('informativo')">Botón Informativo</button>
+    <button onclick="registrarAccion('descarga')">Botón de Descarga</button>
+    <button onclick="registrarAccion('compra')">Botón de Compra</button>
+
+    <script>
+        let tiempoPermanencia = 0; // Variable global para almacenar el tiempo de permanencia
+
+        function registrarAccion(accion) {
+            const userId = document.getElementById('userId').value;
+            if (!userId) {
+                console.error('Ingresa un nombre de usuario');
+                return;
+            }
+
+            console.log('Registrando acción:', accion, 'para el usuario:', userId);
+
+            const data = {
+                userId: userId,
+                accion: accion,
+                tiempoPermanencia: tiempoPermanencia
+            };
+
+            fetch('http://localhost:3000/registrar-accion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(responseData => {
+                console.log('Respuesta del servidor:', responseData);
+            })
+            .catch(error => {
+                console.error('Error al enviar los datos:', error);
+            });
+        }
+
+        // Función para calcular el tiempo de permanencia en la página
+        function calcularTiempoPermanencia() {
+            tiempoPermanencia += 1000; // Incrementar en 1000 ms (1 segundo)
+            console.log('Tiempo de permanencia:', tiempoPermanencia);
+        }
+
+        // Iniciar el cronómetro
+        setInterval(calcularTiempoPermanencia, 1000); // Llamar a la función cada 1000 ms (1 segundo)
+    </script>
+</body>
+</html>
