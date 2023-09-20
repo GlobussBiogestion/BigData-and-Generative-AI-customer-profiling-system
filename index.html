@@ -1,38 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mi Página Web</title>
+    <title>GenerAI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #userIdLabel {
+            font-weight: bold;
+        }
+
+        #userId {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin: 5px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
-    <h1>Bienvenido a mi página web</h1>
-    <input type="text" id="userId" placeholder="Nombre de usuario">
+    <h1>GenerAI - Customer Profiling with BigData and Generative AI</h1>
+    <label for="userId" id="userIdLabel">Enter your username:</label>
+    <input type="text" id="userId" placeholder="Username">
     <br><br>
-    <a href="#" onclick="registrarAccion('enlace-interno')">Enlace Interno</a>
-    <a href="https://www.ejemplo.com" onclick="registrarAccion('enlace-externo')">Enlace Externo</a>
+    <a href="#" onclick="registerAction('internal-link')">Internal Link</a>
+    <a href="https://www.example.com" onclick="registerAction('external-link')">External Link</a>
     <br><br>
-    <button onclick="registrarAccion('informativo')">Botón Informativo</button>
-    <button onclick="registrarAccion('descarga')">Botón de Descarga</button>
-    <button onclick="registrarAccion('compra')">Botón de Compra</button>
+    <button onclick="registerAction('informative')">Informative Button</button>
+    <button onclick="registerAction('download')">Download Button</button>
+    <button onclick="registerAction('purchase')">Purchase Button</button>
 
-    <script>
-        let tiempoPermanencia = 0; // Variable global para almacenar el tiempo de permanencia
+   <script>
+        let timeSpent = 0; // Global variable to store time spent
 
-        function registrarAccion(accion) {
-            const userId = document.getElementById('userId').value;
-            if (!userId) {
-                console.error('Ingresa un nombre de usuario');
+        function registerAction(action) {
+            const username = document.getElementById('userId').value;
+            if (!username) {
+                console.error('Enter a username');
                 return;
             }
 
-            console.log('Registrando acción:', accion, 'para el usuario:', userId);
+            console.log('Registering action:', action, 'for user:', username);
 
             const data = {
-                userId: userId,
-                accion: accion,
-                tiempoPermanencia: tiempoPermanencia
+                username: username,
+                action: action,
+                timeSpent: timeSpent
             };
-
-            fetch('http://localhost:3000/registrar-accion', {
+fetch('http://localhost:3000/register-action', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -41,21 +88,22 @@
             })
             .then(response => response.json())
             .then(responseData => {
-                console.log('Respuesta del servidor:', responseData);
+                console.log('Server response:', responseData);
             })
             .catch(error => {
-                console.error('Error al enviar los datos:', error);
+                console.error('Error sending data:', error);
             });
         }
 
-        // Función para calcular el tiempo de permanencia en la página
-        function calcularTiempoPermanencia() {
-            tiempoPermanencia += 1000; // Incrementar en 1000 ms (1 segundo)
-            console.log('Tiempo de permanencia:', tiempoPermanencia);
+        // Function to calculate time spent on the page
+        function calculateTimeSpent() {
+            timeSpent += 1000; // Increase by 1000 ms (1 second)
+            console.log('Time spent:', timeSpent);
         }
 
-        // Iniciar el cronómetro
-        setInterval(calcularTiempoPermanencia, 1000); // Llamar a la función cada 1000 ms (1 segundo)
+        // Start the timer
+        setInterval(calculateTimeSpent, 1000); // Call the function every 1000 ms (1 second)
     </script>
+
 </body>
 </html>
