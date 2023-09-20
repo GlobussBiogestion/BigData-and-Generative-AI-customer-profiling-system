@@ -9,6 +9,5 @@ It is important to change the Atlas Server string with the one in your case, bot
 Then, you activate your server, open index.html, fill the website with various data (understanding that each time you close and open a new user is counted), update the collection in MongoDB compass, and run the Python script.
 
 # Screenshots
-![Texto alternativo](https://drive.google.com/uc?id=1fvnF7iMIKpL52nuB3O0544mdMAL4pDjB)
-
-![Texto alternativo](https://drive.google.com/uc?id=1-mhN5yXAfFUT3zYzjX9CLUk7Zx_vI249)
+![output_graph](https://drive.google.com/uc?id=1fvnF7iMIKpL52nuB3O0544mdMAL4pDjB)
+![output_console](https://drive.google.com/uc?id=1-mhN5yXAfFUT3zYzjX9CLUk7Zx_vI249)
