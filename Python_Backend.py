@@ -14,7 +14,7 @@ import nltk
 nltk.download('wordnet')
 
 # Connect with MongoDB
-mongodb_url = 'mongodb+srv://Globuss:Perry-08@globusscluster.byoimwn.mongodb.net'
+mongodb_url = 'mongodb+srv://<username>:<password>@<cluster>.mongodb.net'
 
 try:
     # Find the database and collection folders
