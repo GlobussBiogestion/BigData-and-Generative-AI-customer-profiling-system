@@ -3,6 +3,8 @@ BigData system to capture user actions on buttons and links, as well as their ti
 
 # How to perform
 
+
 # Screenshots
 ![Texto alternativo](https://drive.google.com/uc?id=1fvnF7iMIKpL52nuB3O0544mdMAL4pDjB)
+
 ![Texto alternativo](https://drive.google.com/uc?id=1-mhN5yXAfFUT3zYzjX9CLUk7Zx_vI249)
