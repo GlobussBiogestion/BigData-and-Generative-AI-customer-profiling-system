@@ -2,3 +2,4 @@
 BigData system to capture information on user actions on buttons and links, as well as their permanence time. Javascript app that connects to MongoDB.
 
 # Screenshots
+![Texto alternativo](https://drive.google.com/drive/u/0/folders/1DGOUI5t0oj71YriciEKYzoo1ZLlnKTSV)
