@@ -4,78 +4,66 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-// Configuración de MongoDB Atlas
-const mongoURI = 'mongodb+srv://<nombre_usuario>:<contraseña>@<nombre_cluster>.mongodb.net/<nombre_base_datos>
-?retryWrites=true&w=majority';
+// MongoDB Atlas Configuration
+const mongoURI = 'mongodb+srv://<username>:<password>@<cluster>.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Conexión a MongoDB Atlas exitosa'))
-    .catch(err => console.error('Error al conectar a MongoDB Atlas:', err));
+    .then(() => console.log('Connection to MongoDB Atlas successful'))
+    .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
 
-// Definición del modelo de datos
-const UsuarioSchema = new mongoose.Schema({
-    _id: String, // Cambiar el tipo de dato a String para utilizar userId como identificador
-    acciones: [{
-        accion: String,
-        tiempoPermanencia: Number
+// Data Model Definition
+const UserSchema = new mongoose.Schema({
+    _id: String,
+    actions: [{
+        action: String,
+        timeSpent: Number
     }]
 });
 
-const Usuario = mongoose.model('Usuario', UsuarioSchema);
+const User = mongoose.model('User', UserSchema);
 
-// Middleware para parsear JSON
+// Middleware to parse JSON
 app.use(bodyParser.json());
 
-// Middleware para habilitar CORS
+// Middleware to enable CORS
 app.use(cors());
 
-// Ruta para registrar acciones en la base de datos
-app.post('/registrar-accion', async (req, res) => {
-    console.log('Solicitud recibida en /registrar-accion:', req.body);
+// Route to register actions in the database
+app.post('/register-action', async (req, res) => {
+    console.log('Request received at /register-action:', req.body);
 
-    // Obtener el userId desde el cuerpo de la solicitud
-    const userId = req.body.userId;
-    if (!userId) {
-        console.error('Ingresa un nombre de usuario');
-        res.status(400).json({ mensaje: 'Ingresa un nombre de usuario' });
+    // Get username from the request body
+    const username = req.body.username;
+    if (!username) {
+        console.error('Enter a username');
+        res.status(400).json({ message: 'Enter a username' });
         return;
     }
 
     try {
-        // Buscar o crear el usuario en la base de datos
-        let usuario = await Usuario.findById(userId);
-        if (!usuario) {
-            usuario = new Usuario({ _id: userId });
+        // Find or create the user in the database
+        let user = await User.findById(username);
+        if (!user) {
+            user = new User({ _id: username });
         }
 
-        // Agregar la acción actual al array de acciones del usuario
-        usuario.acciones.push({
-            accion: req.body.accion,
-            tiempoPermanencia: req.body.tiempoPermanencia
+        // Add the current action to the user's actions array
+        user.actions.push({
+            action: req.body.action,
+            timeSpent: req.body.timeSpent
         });
 
-        // Guardar el usuario en la base de datos
-        await usuario.save();
+        // Save the user to the database
+        await user.save();
 
-        console.log('Acción registrada en la base de datos:', usuario);
-        res.json({ mensaje: 'Acción registrada con éxito' });
+        console.log('Action registered in the database:', user);
+        res.json({ message: 'Action registered successfully' });
     } catch (error) {
-        console.error('Error al guardar la acción:', error);
-        res.status(500).json({ mensaje: 'Error al guardar la acción' });
+        console.error('Error saving the action:', error);
+        res.status(500).json({ message: 'Error saving the action' });
     }
 });
 
-// Iniciar el servidor en el puerto 3000
+// Start the server on port 3000
 app.listen(3000, () => {
-    console.log('Servidor iniciado en http://localhost:3000');
-});
-
-// Ruta para obtener datos en tiempo real desde la base de datos
-app.get('/obtener-datos', async (req, res) => {
-    try {
-        const usuarios = await Usuario.find(); // Recuperar todos los usuarios
-        res.json(usuarios);
-    } catch (error) {
-        console.error('Error al obtener los datos:', error);
-        res.status(500).json({ mensaje: 'Error al obtener los datos' });
-    }
+    console.log('Server started at http://localhost:3000');
 });
