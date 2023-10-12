@@ -2,11 +2,9 @@
 BigData system to capture user actions on buttons and links, as well as their time spent on a website, to subsequently perform unsupervised clustering and analysis of keywords via generative AI and webscraping. Javascript application that connects to MongoDB, using a node.js server, and passes the captured data to a Python backend.
 
 # How to perform
-You must create a new folder on your computer and include all the files there (taking into account that node_modules.rar must be unzipped). Then, you must have all the necessary programs, plugins and libraries installed: MongoDb Compass, Atlas Server with an assigned cluster, Node.js accompanied by npm and express, Python together with an IDE (including pymongo, sklearn, matplotlib, numpy, beautiful soup and nltk).
+Download the zip of the entire project in the <> Code button here on GitHub. Unzip the folder on your computer. You must have node.js and npm installed.
 
-It is important to change the Atlas Server string with the one in your case, both in app.js and in Python_Backend.py.
-
-Then, you activate your server, open index.html, fill the website with various data (understanding that each time you close and open a new user is counted), update the collection in MongoDB compass, and run the Python script.
+Inside the folder you downloaded, you must open the command prompt and do the following: verify the installation of node.js with node -v, verify the installation of npm with npm -v, create the package.json file with npm init -y, install express (package-lock.json file and node_modules folder) with npm install express, install the dependencies required by the project with npm install express body-parser mongoose cors. This is all!
 
 # Screenshots
 ![output_graph](https://drive.google.com/uc?id=1fvnF7iMIKpL52nuB3O0544mdMAL4pDjB)
