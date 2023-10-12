@@ -4,7 +4,9 @@ BigData system to capture user actions on buttons and links, as well as their ti
 # How to perform
 Download the zip of the entire project in the <> Code button here on GitHub. Unzip the folder on your computer. You must have node.js and npm installed.
 
-Inside the folder you downloaded, you must open the command prompt and do the following: verify the installation of node.js with node -v, verify the installation of npm with npm -v, create the package.json file with npm init -y, install express (package-lock.json file and node_modules folder) with npm install express, install the dependencies required by the project with npm install express body-parser mongoose cors. This is all!
+Inside the folder you downloaded, you must open the command prompt and do the following: verify the installation of node.js with node -v, verify the installation of npm with npm -v, create the package.json file with npm init -y, install express (package-lock.json file and node_modules folder) with npm install express, install the dependencies required by the project with npm install express body-parser mongoose cors.
+
+Change the MongoDB Atlas cluster strings in both app.js and Python_Backend and you will have the API working in a local environment. This is all!
 
 # Screenshots
 ![output_graph](https://drive.google.com/uc?id=1fvnF7iMIKpL52nuB3O0544mdMAL4pDjB)
