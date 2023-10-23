@@ -9,7 +9,7 @@ Inside the folder you downloaded, you must open the command prompt and do the fo
 Change the MongoDB Atlas cluster strings in both app.js and Python_Backend and you will have the API working in a local environment. This is all!
 
 # Demos
-[ES| System running in local environment](https://www.youtube.com/watch?v=JTmGPEqoBdQ)
+[ES | System running in local environment](https://www.youtube.com/watch?v=JTmGPEqoBdQ)
 
 
 # Screenshots
