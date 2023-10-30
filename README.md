@@ -10,6 +10,7 @@ Change the MongoDB Atlas cluster strings in both app.js and Python_Backend and y
 
 # Demos
 [ES | System running in local environment](https://www.youtube.com/watch?v=JTmGPEqoBdQ)
+[ES | System running in cloud environment](https://www.youtube.com/watch?v=0a_LojiBjvs)
 
 
 # Screenshots
